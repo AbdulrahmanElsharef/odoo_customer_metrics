@@ -3,9 +3,9 @@
     'name': 'Customer Sales Metrics',
     # Module Version
     'version': '17.0.1.0',
-    # Module Summary (Short Description)
+    # Module Summary 
     'summary': 'Track and analyze customer sales performance with total sales and order count metrics.',
-    # Module Description (Long Description)
+    # Module Description 
     'description': """
         Custom Module for Customer Sales Metrics 
         ============================
@@ -20,14 +20,14 @@
     """,
     # Author of the Module
     'author': 'Abdulrahman Elsharef',
-    # Website (Optional)
-    'website': 'https://github.com/AbdulrahmanElsharef',
-    'depends': ['base','sale'],
+    # Website 
+    'website': 'https://github.com/AbdulrahmanElsharef/odoo_customer_metrics',
+    'depends': ['base','sale'], #depends module for our moduole
     'data': [
-        'security/ir.model.access.csv',  # Add security file
-        'views/customer_metrics_view.xml',  # Add the XML file here
+        'security/ir.model.access.csv',  #  security file
+        'views/customer_metrics_view.xml',  #  the XML file 
     ],
     'installable': True,
     'application': True,
-    'license': 'LGPL-3',  # License for your module (LGPL-3 in this case)
+    'license': 'LGPL-3',  # License for your module 
 }

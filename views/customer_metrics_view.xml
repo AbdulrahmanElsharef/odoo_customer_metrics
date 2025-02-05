@@ -1,47 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<odoo>
-    <!-- Action to open the Top Customers Dashboard -->
-    <record id="action_customers_dashboard" model="ir.actions.act_window">
-        <field name="name">Top Customers</field>
-        <field name="res_model">res.partner.customer_metrics</field>
-        <field name="view_mode">kanban,tree</field>
-        <!-- <field name="context">{'search_default_top_customers': True}</field> -->
+<?xml version="1.0" encoding="UTF-8"?>  
+<odoo>  <!-- Root element  XML  -->
+
+    <!-- Action to open  Top Customers  -->
+    <record id="action_customers_dashboard" model="ir.actions.act_window">  <!-- Define  window action id and from ir.actions.act_window model -->
+        <field name="name">All Customers</field>  <!-- Name of  action  in the UI -->
+        <field name="res_model">res.partner.customer_metrics</field>  <!-- Model of the action  -->
+        <field name="view_mode">kanban,tree</field>  <!--  view modes for  action Kanban and Tree views -->
     </record>
 
-    <!-- Tree View -->
-    <record id="view_customer_metrics_tree" model="ir.ui.view">
-        <field name="name">res.partner.customer_metrics.tree</field>
-        <field name="model">res.partner.customer_metrics</field>
-        <field name="arch" type="xml">
-            <tree string="Customer Metrics">
-                <field name="customer_id" />
-                <field name="total_sales" />
-                <field name="order_count" />
+    <!-- Tree View for Customer -->
+    <record id="view_customer_metrics_tree" model="ir.ui.view">  <!--  Tree view id and from ir.ui.view model -->
+        <field name="name">res.partner.customer_metrics.tree</field>  <!--  name of the view -->
+        <field name="model">res.partner.customer_metrics</field>  <!-- Model for this view  -->
+        <field name="arch" type="xml">  <!-- structure and fields -->
+            <tree string="Customer Metrics">  <!-- Tree view  display name -->
+                <field name="customer_id" />  <!-- Display  customer_id field  -->
+                <field name="total_sales" />  <!-- Display  total_sales  -->
+                <field name="order_count" />  <!-- Display  order_count  -->
             </tree>
         </field>
     </record>
 
-
-    <!-- Kanban View -->
-    <record id="view_customer_metrics_kanban" model="ir.ui.view">
-        <field name="name">res.partner.customer_metrics.kanban</field>
-        <field name="model">res.partner.customer_metrics</field>
-        <field name="arch" type="xml">
-            <kanban string="Customer Metrics">
-                <field name="customer_id" />
-                <field name="total_sales" />
-                <field name="order_count" />
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="o_kanban_record_title">
-                                <strong><field name="customer_id" /></strong>
+    <!-- Kanban View for Customer  -->
+    <record id="view_customer_metrics_kanban" model="ir.ui.view">  <!-- Define   Kanban view -->
+        <field name="name">res.partner.customer_metrics.kanban</field>  <!--  name of  view -->
+        <field name="model">res.partner.customer_metrics</field>  <!-- Model to  view applies -->
+        <field name="arch" type="xml">  
+            <kanban string="Customer Metrics">  <!-- Kanban view definition with a display name -->
+                <field name="customer_id" />  <!-- Include  customer_id field   Kanban  -->
+                <field name="total_sales" />  <!-- Include  total_sales field   Kanban  -->
+                <field name="order_count" />  <!-- Include  order_count field   Kanban  -->
+                <templates>  <!-- Define  HTML templates for  Kanban cards -->
+                    <t t-name="kanban-box">  <!-- name for  Kanban card -->
+                        <div class="oe_kanban_global_click">  <!-- Container for  Kanban card -->
+                            <div class="o_kanban_record_title">  <!-- Title section of  card by record title -->
+                                <strong><field name="customer_id" /></strong>  <!-- Display  customer_id in bold -->
                             </div>
-                            <div>
-                                <span>Total Sales: <field name="total_sales" /></span>
+                            <div>  <!-- Section for total sales -->
+                                <span>Total Sales: <field name="total_sales" /></span>  <!-- Display  total_sales  -->
                             </div>
-                            <div>
-                                <span>Order Count: <field name="order_count" /></span>
+                            <div>  <!-- Section for order count -->
+                                <span>Order Count: <field name="order_count" /></span>  <!-- Display  order_count  -->
                             </div>
                         </div>
                     </t>
@@ -50,6 +49,13 @@
         </field>
     </record>
 
-        <!-- Menu Item for the Dashboard -->
-    <menuitem id="menu_sales_customers_metrics" name="Top Customers " parent="sale.sale_menu_root" action="action_customers_dashboard" sequence="10"/>
-</odoo>
+    <!-- Menu Item for the Dashboard -->
+    <menuitem id="menu_sales_customers_metrics" name="Top Customers" parent="sale.sale_menu_root" action="action_customers_dashboard" sequence="10"/>  <!-- Define a menu item -->
+    <!-- 
+        id: Unique name for  menu item.
+        name: Display name for menu item.
+        parent: Parent menu (sale.sale_menu_root is the Sales app root menu).
+        action: Action to opens the Top Customers when   menu item is clicked 
+        sequence: Order  menu item appears 
+    -->
+</odoo>  
