@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Action to open the Top Customers Dashboard -->
+    <record id="action_customers_dashboard" model="ir.actions.act_window">
+        <field name="name">Top Customers</field>
+        <field name="res_model">res.partner.customer_metrics</field>
+        <field name="view_mode">kanban,tree</field>
+        <!-- <field name="context">{'search_default_top_customers': True}</field> -->
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_customer_metrics_tree" model="ir.ui.view">
+        <field name="name">res.partner.customer_metrics.tree</field>
+        <field name="model">res.partner.customer_metrics</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Metrics">
+                <field name="customer_id" />
+                <field name="total_sales" />
+                <field name="order_count" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Kanban View -->
+    <record id="view_customer_metrics_kanban" model="ir.ui.view">
+        <field name="name">res.partner.customer_metrics.kanban</field>
+        <field name="model">res.partner.customer_metrics</field>
+        <field name="arch" type="xml">
+            <kanban string="Customer Metrics">
+                <field name="customer_id" />
+                <field name="total_sales" />
+                <field name="order_count" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <strong><field name="customer_id" /></strong>
+                            </div>
+                            <div>
+                                <span>Total Sales: <field name="total_sales" /></span>
+                            </div>
+                            <div>
+                                <span>Order Count: <field name="order_count" /></span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+        <!-- Menu Item for the Dashboard -->
+    <menuitem id="menu_sales_customers_metrics" name="Top Customers " parent="sale.sale_menu_root" action="action_customers_dashboard" sequence="10"/>
+</odoo>
